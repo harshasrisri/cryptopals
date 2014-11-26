@@ -2,7 +2,10 @@
 
 import sys, binascii
 
-def hamming_distance_of (str1, str2):
+def binary_hamming_distance_of (str1, str2):
+    """
+    Calculates the Hamming distance of 2 strings after converting them to ascii-decoded binary strings
+    """
     str1.strip()
     str2.strip()
     if len(str1) != len(str2):
@@ -22,7 +25,7 @@ def main ():
         str1 = "test string"
         str2 = "TEST STRING"
 
-    print ("Hamming distance of '%s' and '%s' is %d") % (str1, str2, hamming_distance_of(str1, str2))
+    print ("Hamming distance of '%s' and '%s' is %d") % (str1, str2, binary_hamming_distance_of(str1, str2))
 
 if __name__ == "__main__":
     main()
