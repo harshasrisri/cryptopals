@@ -1,24 +1,34 @@
 #!/usr/bin/python2
 #Challenge 6, set 1, cryptopals.com
 
-import sys, base64
+import sys, base64, itertools
 from operator import itemgetter
 from edit_distance import edit_distance_of
+sys.path.insert (0,'../c3_onekeyxor')
+import onekeyxor
 
 def guess_key_size (encr_text):
     return [(i, float(edit_distance_of (encr_text[0:i], encr_text[i:2*i])) / i) for i in range (2, 41)]
 
 def break_with (encr_text, keysize):
-    block_size = len(encr_text) / keysize
+    numblocks = len(encr_text) / keysize
 
-    matrix = [encr_text[block_size * i: block_size * (i + 1)] for i in range(0, keysize)]
-    if block_size * keysize < len(encr_text): 
-        matrix.append(encr_text[keysize * block_size:])
+    matrix = [encr_text[numblocks * i: numblocks * (i + 1)] for i in range(0, keysize)]
+    if numblocks * keysize < len(encr_text): 
+        matrix.append(encr_text[keysize * numblocks:])
 
-    print ("%d : %d : %d : %d") % (len(encr_text), keysize, block_size, len(matrix))
+    transpose = map(None, *matrix)
 
-    # for i in range(0, len(matrix[-1])):
-        
+    keyword=''
+    for row in transpose:
+        try:
+            encr_line = ''.join(row)
+        except TypeError:
+            encr_line = ''.join(row[:-1])
+        key,rank = onekeyxor.max_rank(encr_line.encode('hex'))
+        keyword = keyword + key
+
+    print keyword
 
 def main ():
     if len(sys.argv) != 2:
