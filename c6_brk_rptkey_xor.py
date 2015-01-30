@@ -3,9 +3,7 @@
 
 import sys, base64, itertools
 from operator import itemgetter
-from edit_distance import edit_distance_of
-sys.path.insert (0,'../c3_onekeyxor')
-import onekeyxor
+from libcryptopal import *
 
 def guess_key_size (encr_text):
     return [(i, float(edit_distance_of (encr_text[0:i], encr_text[i:2*i])) / i) for i in range (2, 41)]
@@ -25,7 +23,7 @@ def break_with (encr_text, keysize):
             encr_line = ''.join(row)
         except TypeError:
             encr_line = ''.join(row[:-1])
-        key,rank = onekeyxor.max_rank(encr_line.encode('hex'))
+        key,rank = guess_key(encr_line.encode('hex'))
         keyword = keyword + key
 
     print keyword
