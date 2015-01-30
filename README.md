@@ -7,7 +7,7 @@ The reminder of this document gives a summary of the problems.
 ##Set1
 
 |Challenge|Name|Code|Result|
-|:-------:|----|-|-|
+|---------|----|----|------|
 |1|[Hex to Base64 Convertor](http://cryptopals.com/sets/1/challenges/1/) | [Code](c1_hex2b64.py) | [Result](results.md#c1)|
 |2|[Fixed Key XOR](http://cryptopals.com/sets/1/challenges/2/) | [Code](c2_fixed_xor.py) | [Result](results.md#c2)|
 |3|[Single-byte XOR cipher](http://cryptopals.com/sets/1/challenges/3/) | [Code](c3_onekeyxor.py) | [Result](results.md#c3)|
