@@ -10,7 +10,9 @@ def main () :
 
     maxrank = 0
     for line in open (sys.argv[1]):
-        key,rank = guess_key(line)
+        line = line.strip()
+        line = line.decode('hex')
+        key,rank = guess_keychar(line)
         if rank > maxrank:
             maxrank = rank
             maxkey = key
