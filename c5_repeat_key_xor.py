@@ -12,7 +12,7 @@ def main ():
         line = input_file.read()
 
     # for line in open(sys.argv[2]):
-    cryptline = xorstr (sys.argv[1], line).encode('hex')
+    cryptline = xorstr (sys.argv[1], line.strip()).encode('hex')
     print ("Plaintext line: " + line)
     print ("Encrypted line: " + cryptline)
 

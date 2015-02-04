@@ -49,7 +49,35 @@ def edit_distance (str1, str2):
             wokka wokka!!!
     is 37. Note that the length of the strings should be equal
     """
-    if len(str1.strip()) != len(str2.strip()):
+    str1.strip()
+    str2.strip()
+    if len(str1) != len(str2):
         raise ValueError("Strings have to be of equal lengths: " + str1 + " and " + str2)
 
     return sum(bit=='1' for bit in bin(int(binascii.hexlify(xorstr(str1, str2)), 16)))
+
+def get_key_distances (encr_text, smallest, biggest):
+    """
+    Returns a dictionary of SIZEs and their normalized edit distance 
+    calculated using the first and the next SIZE bytes 
+    """
+    return [(i, float(edit_distance (encr_text[0:i], encr_text[i:2*i])) / i) for i in range (smallest, biggest)]
+
+def guess_keyphrase (encr_text, keysize):
+    """
+    This function returns a keyphrase guessed from the given cryptotext and keysize
+    """
+    # First calculate the number of blocks of keysize length
+    block_size = (len(encr_text) / keysize) + 1
+    # Pad the string with appropriate number of NULs to form a blocksize multiple length string
+    encr_text = encr_text.ljust(block_size * keysize, '\0')
+
+    keyphrase = ''
+    for i in range (0, keysize):
+        line=''
+        # Form a string of blocksize length to guess one character in keyphrase
+        for j in range (0, block_size):
+            line = line + encr_text[(j * keysize) + i]
+        (key_char,weight) = guess_keychar (line)
+        keyphrase = keyphrase + key_char
+    return keyphrase
