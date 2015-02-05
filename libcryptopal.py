@@ -81,3 +81,10 @@ def guess_keyphrase (encr_text, keysize):
         (key_char,weight) = guess_keychar (line)
         keyphrase = keyphrase + key_char
     return keyphrase
+
+def keymaxval (dictionary):
+    """
+    takes a dictionary and returns the key with maximum value
+    """
+    values = list (dictionary.values())
+    return list(dictionary.keys())[values.index(max(values))]

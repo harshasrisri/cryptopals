@@ -19,4 +19,4 @@ python2 c2_fixed_xor.py 1c0111001f010100061a024b53535009181c 6869742074686520627
 python2 c3_onekeyxor.py 1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736
 python2 c4_detect_xor_string.py c4.txt 
 python2 c5_repeat_key_xor.py ICE c5.txt
-# python2 c6_brk_rptkey_xor.py c6.txt
+python2 c6_brk_rptkey_xor.py c6.txt

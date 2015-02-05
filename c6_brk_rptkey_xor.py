@@ -16,11 +16,9 @@ def main ():
     keyring = dict()
     for keysize, distance in key_distances:
         keyphrase = guess_keyphrase (encr_text, keysize)
-        keyring[keyphrase] = string_rank (keyphrase)
-        print "keysize : %d \t distance : %f \t keyrank : %f \t keyphrase : %s" % \
-                (keysize, distance, string_rank(xorstr(keyphrase,encr_text)) / keysize, keyphrase)
-
-    # print xorstr ('Terminator X: Bring the noise', encr_text)
+        keyring[keyphrase] = string_rank (xorstr(keyphrase,encr_text))
+    
+    print "Keyphrase : \"%s\"" % keymaxval (keyring)
 
 if __name__ == "__main__":
     main()
