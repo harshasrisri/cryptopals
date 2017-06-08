@@ -10,7 +10,7 @@ def main ():
 
     msg = sys.argv[1].decode('hex')
     maxkey,result=guess_keychar(msg)
-    print ("%c : %d : %s") % (maxkey, result, xorstr(maxkey, msg))
+    print ("%c : %s") % (maxkey, xorstr(maxkey, msg))
 
 if __name__ == "__main__":
     main()

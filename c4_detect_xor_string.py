@@ -17,7 +17,7 @@ def main () :
             maxrank = rank
             maxkey = key
             maxline = line
-    print ("%c : %d : %s") % (maxkey, maxrank, xorstr(maxkey,maxline))
+    print ("%c : %s") % (maxkey, xorstr(maxkey,maxline))
     return
 
 if __name__ == "__main__":

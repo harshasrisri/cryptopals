@@ -11,4 +11,4 @@ if len(sys.argv[1]) != len(sys.argv[2]):
 
 num1 = int(sys.argv[1], 16)
 num2 = int(sys.argv[2], 16)
-print "%X xor %X = %X" % (num1, num2, num1 ^ num2)
+print "%X" % (num1 ^ num2)
