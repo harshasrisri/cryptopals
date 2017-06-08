@@ -7,14 +7,12 @@ def main ():
         print ("Usage: " + sys.argv[0] + " <key_phrase> <textfile>")
         sys.exit()
 
-    print ("Keyword: " + sys.argv[1])
     with open (sys.argv[2]) as input_file:
         line = input_file.read()
 
     # for line in open(sys.argv[2]):
-    cryptline = xorstr (sys.argv[1], line.strip()).encode('hex')
-    print ("Plaintext line: " + line)
-    print ("Encrypted line: " + cryptline)
+    cryptline = xorstr (sys.argv[1], line.strip()).encode('base64')
+    print (cryptline)
 
     return
 
